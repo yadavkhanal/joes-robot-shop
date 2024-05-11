@@ -5,6 +5,7 @@ import { IProduct } from './product.model';
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
+
 })
 export class CatalogComponent {
   products: any;
@@ -197,6 +198,15 @@ export class CatalogComponent {
     return this.filter === '' ? this.products : this.products.filter(
       (product: any) => product.category === this.filter
     );
+  }
+
+  getDiscountedClasses(product: IProduct){
+    if(product.discount > 0) {
+      return ['strikethrough'];
+    } else {
+      return '';
+    }
+    // return {strikethrough: product.discount > 0};
   }
 
 }
